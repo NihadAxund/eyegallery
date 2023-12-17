@@ -95,7 +95,7 @@
 
 
                 <Button Name="Min_size" Click="Btn_Size_Click" Background="{x:Null}" BorderBrush="{x:Null}">
-                    <materialDesign:PackIcon Kind="ImageSizeSelectSmall" Width="30" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" />
+                    <materialDesign:PackIcon Kind="ImageSizeSelectSmall" Width="28" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" />
                 </Button>
                 <Button Name="Full_Size" Click="Btn_Size_Click"  Margin="10,0,0,0" Foreground="#DD000000" Background="{x:Null}" BorderBrush="{x:Null}" >
                     <materialDesign:PackIcon  Width="30" Height="30"  Kind="ArrowSplitHorizontal" HorizontalAlignment="Center"  VerticalAlignment="Center" Foreground="#FD000000"/>
