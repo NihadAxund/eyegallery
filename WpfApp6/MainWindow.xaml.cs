@@ -28,6 +28,7 @@ namespace WpfApp6
         private string[] FileStyle = new string[] { "*.png", "*.jpg","*.jpeg","*.jfif" };
         private bool Boolen { get; set; } = false;
         private int Tags = 0;
+        byte[] A = new byte[] { 240, 167, 167, 167 };
         private Button btn()
         {
             Button img = new(); img.Margin = new Thickness(100,10,10,10);
@@ -89,12 +90,13 @@ namespace WpfApp6
             if (boolen)
             {
                 Dock_panel_color.Background = new SolidColorBrush(Colors.White);
-                Menu_Back.Background = new SolidColorBrush(Colors.White);
+                Menu_Back.Background = new SolidColorBrush(Colors.Transparent);
             }
             else
             {
                 Dock_panel_color.Background = new SolidColorBrush(Colors.Bisque);
-                Menu_Back.Background = new SolidColorBrush(Colors.Bisque);
+                Menu_Back.Background = new SolidColorBrush(Color.FromArgb(95,250,245,220));
+                
             }
         }
         private void Check(string FileName)
@@ -110,6 +112,7 @@ namespace WpfApp6
             FiFO.DeleteFolderFile("Imagecopy");
             Check("Imagecopy");
             Check(FileName);
+            BG_COLORS(A[0], A[1], A[2], A[3]);
         }
         private void ImageCopy(string FileName,bool iso = false)
         {
@@ -118,7 +121,7 @@ namespace WpfApp6
                 System.IO.Directory.CreateDirectory(FileName);
             else MyNewFolder(FileName,iso);
         }
-        private void Addimage(string FileName,bool iso = false) {
+        private async void Addimage(string FileName,bool iso = false) {
            
             Button img = btn();
             ImageCopy(FileName,iso);
@@ -205,7 +208,7 @@ namespace WpfApp6
             
         }
      //   byte A=200, R = 167, G = 167, B = 167;
-        byte[] A = new byte[] { 200, 167, 167, 167 };
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button btn)
@@ -217,8 +220,15 @@ namespace WpfApp6
                 window.ShowDialog();
             }
         }
-        private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e) =>DragMove();
-
+        private async void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+ 
+            await Task.Run(async () =>
+            {
+                 await Dispatcher.BeginInvoke(DragMove);
+            });
+             
+        }
 
         private void BG_COLORS(byte A,byte R, byte G, byte B)
         {
